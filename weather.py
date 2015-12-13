@@ -1,15 +1,10 @@
 import serial
 import datetime
 import time
-import os
+import xively
 
 
 number = input('input serial port number: ')
-#ser = serial.Serial('COM'+ser_number, 9600)
-#ser.flushInput()
-#ser.close()
-#ser.open()
-ts = time.time()
 
 class Serial_port:
 	def __init__(self, port, baudrate = 9600, timeout = 5):
@@ -59,7 +54,7 @@ while 1:
 		COsensor = comdataA[5]
 	except:
 		pass
-	output = '%s/%s,%s,%s,%s,%s,%s,%s' %(datestamp,timestamp,pressure,tempbmp080,tempDS,tempDHT,humidDHT,COsensor)
+	output = '%s/%s-%s,%s,%s,%s,%s,%s' %(datestamp,timestamp,pressure,tempbmp080,tempDS,tempDHT,humidDHT,COsensor)
 #	myfile = open(filename+'.csv','a')
 #	myfile.write(str(output))
 	print(str(output))
