@@ -2,7 +2,9 @@ import serial
 import datetime
 import time
 
-ser = serial.Serial('COM7', 9600)
+
+ser_number = input('input serial port number: ')
+ser = serial.Serial('COM'+ser_number, 9600)
 ser.flushInput()
 ser.close()
 ser.open()
