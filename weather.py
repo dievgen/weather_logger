@@ -1,14 +1,34 @@
 import serial
 import datetime
 import time
+import os
 
 
-ser_number = input('input serial port number: ')
-ser = serial.Serial('COM'+ser_number, 9600)
-ser.flushInput()
-ser.close()
-ser.open()
+port_number = input('input serial port number: ')
+#ser = serial.Serial('COM'+ser_number, 9600)
+#ser.flushInput()
+#ser.close()
+#ser.open()
 ts = time.time()
+
+class serial_port:
+	def __init__(self):
+		try:
+			self.port = serial_port.read_port(port_number)
+			self.ser = serial.serial_port(
+				port = serial_port.read_port(port_number),
+				baudrate = 9600,
+				parity = serial.PARITY_NONE,
+				stopbits = serial.STOPBITS_ONE,
+				bytesize = serial.EIGHTBITS,
+				timeout = 1
+			)
+		except SerialException:
+			print('error connection')
+			os._exit()
+	def read_port(self):
+
+
 #filename = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S_log')
 #myfile = open(filename+'.csv','w')
 while 1:
